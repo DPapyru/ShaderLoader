@@ -6,7 +6,7 @@
 
 - **运行时编译** — 自动将 `.fx` 编译为 `Effect`，无需预编译步骤
 - **热重载** — 修改 `.fx` 文件后自动重新编译，游戏内即时生效
-- **跨平台编译器** — Windows 使用 D3DCompiler，Linux/macOS 通过 Wine + fxcompile.exe
+- **跨平台编译器** — Windows 使用 D3DCompiler，Linux/macOS 通过 Wine + fxcompile.exe（C 源码见 `fxcompile/` 目录）
 - **自动加载** — `[AutoLoadShader]` 属性标记 + `ModSystem` 自动扫描
 
 ## 嵌入到你的模组
@@ -63,6 +63,22 @@ dotnet build
 ```bash
 dotnet test ShaderLoader.Tests/ShaderLoader.Tests.csproj
 ```
+
+## Linux/macOS 前置准备
+
+Shader 编译需要 fxcompile.exe，位于 `fxcompile/` 目录。如果缺失，可以自行编译：
+
+```bash
+# 安装 MinGW 交叉编译器
+sudo apt install mingw-w64   # Debian/Ubuntu
+brew install mingw-w64       # macOS
+
+# 编译
+cd fxcompile
+x86_64-w64-mingw32-gcc -o fxcompile.exe fxcompile.c -ld3dcompiler -O2 -s
+```
+
+编译后的 `fxcompile.exe` 会被 `WineFxCompiler` 自动搜索到。
 
 ## 依赖
 

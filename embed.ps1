@@ -20,6 +20,13 @@ Get-ChildItem -Path "$ScriptDir\*.cs" -File | ForEach-Object {
 # Copy CompilerBackend subdirectory
 Copy-Item -Path "$ScriptDir\CompilerBackend" -Destination $ShaderTarget -Recurse -Force
 
+# Copy fxcompile (Linux/macOS shader compiler via Wine)
+$FxCompileDir = Join-Path $ScriptDir "fxcompile"
+if (Test-Path $FxCompileDir) {
+    $EffectsTarget = Join-Path $TargetDir "Effects"
+    Copy-Item -Path $FxCompileDir -Destination $EffectsTarget -Recurse -Force
+}
+
 Write-Host "✓ ShaderLoader 已嵌入到 $ShaderTarget"
 Write-Host "  SDK .csproj 会自动编译这些文件，无需手动修改项目文件。"
 Write-Host "  在你的 Mod 类中加入 using ShaderLoader; 即可使用 AutoLoadShaderAttribute。"

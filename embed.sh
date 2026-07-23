@@ -16,6 +16,12 @@ mkdir -p "$TARGET/ShaderLoader"
 cp -a "$SCRIPT_DIR"/CompilerBackend "$TARGET/ShaderLoader/"
 cp "$SCRIPT_DIR"/*.cs "$TARGET/ShaderLoader/"
 
+# Copy fxcompile (Linux/macOS shader compiler via Wine)
+if [ -d "$SCRIPT_DIR/fxcompile" ]; then
+  mkdir -p "$TARGET/Effects"
+  cp -a "$SCRIPT_DIR/fxcompile" "$TARGET/Effects/"
+fi
+
 echo "✓ ShaderLoader 已嵌入到 $TARGET/ShaderLoader/"
 echo "  SDK .csproj 会自动编译这些文件，无需手动修改项目文件。"
 echo "  在你的 Mod 类中加入 using ShaderLoader; 即可使用 AutoLoadShaderAttribute。"
