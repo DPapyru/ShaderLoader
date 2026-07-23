@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ShaderLoader</RootNamespace>
+
+    <!--
+      FNA 程序集路径。
+      可通过环境变量或命令行覆盖: dotnet build -p:FNAPath=...
+      默认查找 tModLoader Steam 目录下的 FNA.dll。
+      如果找不到，请将 FNA.dll 复制到本地或设置正确的 FNAPath。
+    -->
+    <FNAPath Condition="'$(FNAPath)' == ''">../../../../../../.steam/debian-installation/steamapps/common/tModLoader/Libraries/FNA/1.0.0/FNA.dll</FNAPath>
+
+    <!--
+      tModLoader 程序集路径（提供 ModSystem 基类等）。
+      默认查找 Steam 安装目录。
+    -->
+    <TMLPath Condition="'$(TMLPath)' == ''">../../../../../../.steam/debian-installation/steamapps/common/tModLoader/tModLoader.dll</TMLPath>
+  </PropertyGroup>
+
+  <!-- Expose internals to the test project -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="ShaderLoader.Tests" />
+  </ItemGroup>
+
+  <!-- Reference FNA (FNA = XNA reimplementation for .NET, used by tModLoader) -->
+  <ItemGroup>
+    <Reference Include="FNA">
+      <HintPath>$(FNAPath)</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Reference tModLoader (provides ModSystem, etc.) -->
+  <ItemGroup>
+    <Reference Include="tModLoader">
+      <HintPath>$(TMLPath)</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Reference log4net so ShaderWatcher can log to client.log via Mod.Logger -->
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>$(TMLPath)/../Libraries/log4net/2.0.8.0/log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
