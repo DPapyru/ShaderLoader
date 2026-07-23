@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/dpapyru/.local/share/Terraria/tModLoader/ModSources/ShaderLoader/ShaderLoader.csproj": {}
+  },
+  "projects": {
+    "/home/dpapyru/.local/share/Terraria/tModLoader/ModSources/ShaderLoader/ShaderLoader.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dpapyru/.local/share/Terraria/tModLoader/ModSources/ShaderLoader/ShaderLoader.csproj",
+        "projectName": "ShaderLoader",
+        "projectPath": "/home/dpapyru/.local/share/Terraria/tModLoader/ModSources/ShaderLoader/ShaderLoader.csproj",
+        "packagesPath": "/home/dpapyru/.nuget/packages/",
+        "outputPath": "/home/dpapyru/.local/share/Terraria/tModLoader/ModSources/ShaderLoader/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dpapyru/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.129/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
